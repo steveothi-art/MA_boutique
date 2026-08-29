@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+        /* Tous grands ecran*/
+@media(min-width: 1400px) {
+    header{
+        padding-left: 8%;
+        padding-right: 8%;
+    }
+    .hero{
+        padding-left: 10%;
+        padding-right: 10%;
+        min-height: 700px;
+    }
+    .categories-section, 
+    .products-section{
+        padding-left: 9%;
+        padding-right: 9%;
+    }
+
+}
+/*petit ordibateur*/
+
+@media(max-width:1200px){
+    header{
+        padding: 0 4%;
+    }
+    .hero{
+        padding: 80px 6%;
+    }
+    .categories-section,
+    .products-section {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .categories{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .products-grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+/*Tablette*/
+@media (max-width: 992px){
+    .desktop-nav{
+        display: none;
+    }
+    .hamburger{
+        display: block;
+    }
+
+    .hero{
+        min-height: 600px;
+        padding: 70px 7;
+    }
+    .hero h1{
+        font-size: clamp(48px, 8vw, 75px);
+    }
+
+    .categories{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .products-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-content{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+/*Pteit Tablette / Grand telephone*/
+
+@media(max-width: 768px){
+    header{
+        height: 70px;
+        padding: 0 5%;
+    }
+    .mobile-menu{
+        top: 70px;
+        height: calc(100vh - 70px);
+    }
+    .logo{
+        font-size: 21px
+    }
+    .logo span{
+        font-size: 29px;
+    }
+
+    .icon-btn{
+        display: none;
+    }
+    .header-action{
+        gap: 7px;
+    }
+
+    .hero{
+        min-height: 570px;
+        padding: 60px 6%;
+    }
+    .hero h1{
+        font-size: clamp(45px, 11vw, 65px);
+        letter-spacing: -3px;
+    }
+    .hero p{
+        font-size: 16px;
+        max-width: 100%;
+    }
+    .hero-button{
+        flex-wrap: wrap;
+    }
+
+    .categories-section, 
+    .products-section{
+        padding: 70px 5%;
+    }
+    .section-title h2,
+    .section-heading{
+        font-size: 35px;
+    }
+
+    .products-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .product-image{
+        width: 120px;
+        height: 120px;
+        font-size: 42px;
+    }
+    .promotion{
+        margin: 0 5%;
+        padding: 50px 30px;
+    }
+
+    .footer{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+}
+/*Mobile*/
+
+@media (max-width: 576px) {
+    header{
+        padding: 0 4%;
+    }
+    .logo{
+        font-size: 19px;
+    }
+    .logo span{
+        font-size: 27px;
+    }
+    .cart-btn,
+    .hamburger{
+        width: 38px;
+        height: 38px;
+    }
+
+   
+
+    .footer-content{
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+}
+/* petits telephone*/
+@media (max-width: 380px){
+    header{
+        height: 65px;
+    }
+    .mobile-menu{
+        top: 65px;
+        height: calc(100vh - 65px);
+    }
+    .logo{
+        font-size: 17px;
+    }
+    .logo span{
+        font-size: 24px;
+    }
+    .cart-btn, .hamburger{
+        width: 35px;
+        height: 35px;
+    }
+    
+
+}
+/*tres petits ecran*/
+@media (max-width: 320px) {
+    .logo{
+        font-size: 16px;
+    }
+    .logo span{
+     font-size: 22px;   
+    }
+    .header-action{
+        gap: 3px;
+    }
+    .hero h1{
+        font-size: 36px;
+    }
+    .hero{
+        min-height: 550px;
+    }
+    .product-image{
+        height: 210px;
+    }
+}
+
+:root{
+    --orange: #f97316;
+    --orange-dark: #c2410c;
+
+    --beige: #f5ead7;
+    --beige-light:#fffaf2;
+    --black: #111111;
+    --black-ligth:#222222;
+
+    --white: #ffffff;
+    --gray: #777777;
+
+    --radius: 18px;
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--beige-light);
+    color: var(--black);
+    overflow-x: hidden;
+
+}
+a{
+    text-decoration: none;
+    color: inherit;
+    
+}
+button{
+    font-family: inherit;
+    cursor: pointer;
+}
+
+header{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+    background:  rgba(255, 250, 242, 0.88);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.logo{
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.logo span{
+    color: var(--orange);
+    font-size: 34px;
+}
+.logo strong{
+    color: var(--orange);
+}
+
+.desktop-nav{
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+.desktop-nav a{
+    background: var(--beige-light);
+    border: 1px solid var(--black-ligth);
+    border-radius: var(--radius);
+    padding: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 2px 0 10px var(--orange-dark);
+}
+.desktop-nav a :hover{
+    color: var(--orange);
+    
+}
+.header-action {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.icon-btn, .cart-btn{
+    width: 42px;
+    height: 42px;
+    border: none;
+    background: var(--beige);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+.icon-btn :hover{
+    background: var(--beige);
+    color: var(--orange);
+}
+.cart-btn{
+    position: relative;
+    background: var(--black);
+    color: white;
+}
+.cart-btn :hover{
+    background: var(--orange);
+}
+.cart-btn span{
+    position: absolute;
+    top: -5px;
+    right: -4px;
+    width: 19px;
+    height: 19px;
+    background: var(--orange);
+    color: white;
+    border: 50%;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.hamburger {
+    display: none;
+    width: 42px;
+    height: 42px;
+    border: none;
+    background: var(--black);
+    border-radius: 50%;
+    padding: 9px;
+    cursor: pointer;
+    position: relative;
+    z-index: 6000;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: white;
+    margin: 5px 0;
+    transition: 0.3s ease;
+}
+
+
+/* Animation vers X */
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+
+
+.mobile-menu {
+    position: fixed;
+    top: 80px;
+    right: -100%;
+    width: 50%;
+    max-width: 350px;
+    height: calc(100vh - 80px);
+    padding: 40px 30px;
+    background: rgba(17, 17, 17, 0.96);
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    color: white;
+    z-index: 5000;
+    transition: right 0.4s ease;
+    overflow-y: auto;
+}
+
+
+/* MENU OUVERT */
+
+.mobile-menu.active {
+    right: 0;
+    width: 65%;
+    height: 30%;
+}
+
+
+.mobile-menu a {
+    color: white;
+    font-size: 18px;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+
+.mobile-menu a:hover {
+    color: var(--orange);
+}
+
+
+/* ==========================================
+   TABLETTE + MOBILE
+========================================== */
+
+@media (max-width: 1000px) {
+
+    .desktop-nav {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    header {
+        height: 70px;
+        padding: 0 5%;
+    }
+
+    .hamburger {
+        width: 40px;
+        height: 40px;
+    }
+
+    .mobile-menu {
+        top: 70px;
+        height: calc(100vh - 70px);
+    }
+
+}
+
+
+/* ==========================================
+   PETIT TELEPHONE
+========================================== */
+
+@media (max-width: 380px) {
+
+    header {
+        height: 65px;
+    }
+
+    .hamburger {
+        width: 36px;
+        height: 36px;
+    }
+
+    .mobile-menu {
+        top: 65px;
+        height: calc(100vh - 65px);
+    }
+
+}
+/* footer */
+
+footer{
+    background: var(--black-ligth);
+    color: white;
+    padding: 70px 7% 20px;
+
+}
+.footer-content{
+    display: grid;
+    grid-template-columns: 2fr, 1fr, 1fr, 1fr;
+    gap: 50px;
+}
+.footer-brand p {
+    color: #dedede;
+    max-width: 300px;
+    margin: 20px 0;
+    line-height: 1.6;
+
+}
+.socials{
+    display: flex;
+    gap: 10px;
+}
+.socials a{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+.socials a img{
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+.socials a :hover{
+    background: var(--orange);
+}
+.footer-column{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.footer-column h3{
+    margin-bottom: 10px;
+}
+.footer-column a, 
+.footer-column p{
+    gap: 10px;
+    color: var(--beige);
+
+}
+
+.footer-column a:hover{
+    color: var(--orange);
+}
+.footer-column p{
+    display: flex;
+    gap: 10px;
+}
+.ima{
+    width: 20px;
+    height: 20px;
+}
+.im{
+    width: 20px;
+    height: 20px;
+}
+.copyright{
+    border-top: 1px solid #222;
+    margin-top: 50px;
+    padding-top: 25px;
+    
+    text-align: center;
+    color: #777;
+    font-size: 13px;
+}
+.a-prop{
+    color: var(--black);
+
+}
+.a-prop:hover{
+    color: var(--orange-dark);
+}
+    </style>
+<body>
+    
+     <header>
+        <div class="logo">
+            <span>J</span>ennifer 
+            <strong>Store</strong>
+        </div>
+
+        <nav class="desktop-nav">
+            <a href="e-cormecre1.html">Accueil</a>
+            
+
+        <div class="header-action">
+
+            <button class="hamburger" type="button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header> 
+            
+        <nav class="mobile-menu" id="mobileMenu">
+            <a href="#">A propos</a>
+            <a href="#">Condition</a>
+            
+        </nav>
+<main>
+   <section class="apropos" oninvalid="Apropos">
+        <h3><strong>À propos de de Jennifer store</strong></h3>
+        <br>
+        <p> Jennifer store est une boutique en ligne pensée et minitieusement crée vous proposer une selection de Parfums , hommes, enfants et dames.
+
+            dans l'optique d'améliorer votre syteme de gestion commerciale, Jennifer Store fut confectionné par <strong>Maewen's</strong>. <br>
+           <br>
+             Maewens est une agence creative et digital spécialisé dans la conception 
+            des solutions visuelle et numérique. <br> 
+            <span><strong> Vous avez un projet? Maewen's vous accompagne! </strong>
+            
+            vous souhaitez créer votre site e-commerce, site vitrine, portfolio, application web, mobile ou des solution numérique personnalisé ;
+            des creation infographique ( affiches, creation de logo  carte de visites etc...)</span> 
+
+            retrouver nous sur <a  class="a-prop" href="http://www.maewens.com"> Maewens.com</a>
+
+        </p>
+
+        <section class="Condition" id="Condition"></section>
+   </section>
+</main>
+
+
+    <footer id="contact">
+        <div class="footer-content">
+
+            <div class="footer-brand">
+                <div class="logo">
+                    <span>J</span>ennifer <strong>store</strong>
+                </div>
+
+                <p>Soyer frais et éllegant</p>
+
+                <div class="socials">
+                    <a href="#"><img src="tiktok logo.jpeg" alt="logo"></a>
+                    <a href="#"><img src="whatsapp logo 2.jpeg" alt="logo"></a>
+                </div>
+
+            </div>
+
+            <div class="footer-column">
+                <h3>Information</h3>
+
+                <a href="e-cormecre1.html">retour</a>
+            
+                <p> 
+                    <em>Voir </em> 
+                    <a href="http://maewens.com">Maewen's</a> 
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact</h3>
+                    <p>Appelez maintenant :
+                        <a href="tel:+2250702115661"> +225 0702115661</a>
+                    </p>
+                <a href="mailto:jennifer@gmail.com?subject=commande%20depuis%20votre%20site&body=Boujour%20je%20suis%20intéressé%20par%20vos%20produits%20:%20">  jennifer@gmail.com</a>
+            </div>
+
+        </div>
+            <br>
+            
+        <div class="copyrigth">2026 Jennifer Store _ tous droits recervés.</div>
+
+    </footer>
+    
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* ==============================
+       MENU HAMBURGER
+    ============================== */
+
+    const hamburger = document.querySelector(".hamburger");
+    const mobileMenu = document.querySelector(".mobile-menu");
+
+    if (hamburger && mobileMenu) {
+
+        // Ouvrir / fermer le menu
+        hamburger.addEventListener("click", function () {
+            hamburger.classList.toggle("active");
+            mobileMenu.classList.toggle("active");
+        });
+
+        // Fermer le menu lorsqu'on clique sur un lien
+        const menuLinks = mobileMenu.querySelectorAll("a");
+
+        menuLinks.forEach(function (link) {
+            link.addEventListener("click", function () {
+                hamburger.classList.remove("active");
+                mobileMenu.classList.remove("active");
+            });
+        });
+
+        // Fermer le menu avec la touche Échap
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                hamburger.classList.remove("active");
+                mobileMenu.classList.remove("active");
+            }
+        });
+
+        // Fermer si on clique en dehors du menu
+        document.addEventListener("click", function (event) {
+
+            if (
+                mobileMenu.classList.contains("active") &&
+                !mobileMenu.contains(event.target) &&
+                !hamburger.contains(event.target)
+            ) {
+                hamburger.classList.remove("active");
+                mobileMenu.classList.remove("active");
+            }
+
+        });
+    }
+
+});
+</script>
+```
+
+</body>
+</html>
