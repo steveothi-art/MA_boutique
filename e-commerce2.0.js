@@ -5,7 +5,7 @@
 const hamburger = document.querySelector(".hamburger");
 const mobileMenu = document.getElementById("mobileMenu");
 
-console.log("Hamburger :", hamburger);
+console.log("Hamburger :", hamburger); 
 console.log("Mobile menu :", mobileMenu);
 
 if (hamburger && mobileMenu) {
