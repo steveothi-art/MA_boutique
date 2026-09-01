@@ -495,7 +495,7 @@ if (checkoutButton) {
 
             // Construire le message WhatsApp
             let message =
-                "Bonjour Jennifer Store !%0A%0A" +
+                "Bonjour !%0A%0A" +
                 "Je souhaite passer la commande suivante :%0A%0A";
 
 
